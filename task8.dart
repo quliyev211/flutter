@@ -1,4 +1,3 @@
-```dart
 import 'dart:math';
 import 'dart:io';
 void main() {
@@ -22,7 +21,7 @@ void main() {
         (userChoice == 'daş' && compChoice == 'qayçı') ||
         (userChoice == 'qayçı' && compChoice == 'kağız') ||
         (userChoice == 'kağız' && compChoice == 'daş')) {
-      print('İstifadəçi qazandı!');
+      print('Istifadəçi qazandı!');
       userScore++;
     } else {
       print('Komputer qazandı!');
@@ -39,4 +38,3 @@ void main() {
     }
   }
 }
-```
