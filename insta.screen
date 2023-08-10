@@ -1,1 +1,145 @@
+import 'package:flutter/material.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.light(),
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(
+            'Instagram',
+            style: TextStyle(color: Color.fromARGB(255, 218, 113, 113)),
+          ),
+          centerTitle: true,
+          leading: IconButton(
+            onPressed: () {
+              debugPrint('You clicked me');
+            },
+            icon: const Icon(Icons.arrow_back_ios),
+            color: Colors.black,
+          ),
+          actions: [
+            IconButton(
+              onPressed: () {
+                debugPrint('You clicked me');
+              },
+              icon: const Icon(Icons.image_search_sharp),
+              color: Colors.black,
+            ),
+            IconButton(
+              onPressed: () {
+                debugPrint('You clicked me');
+              },
+              icon: const Icon(Icons.more_horiz_outlined),
+              color: Colors.black,
+            ),
+          ],
+          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
+          elevation: 5,
+        ),
+        body: ListView.builder(
+          itemCount: 1000,
+          itemBuilder: (BuildContext context, int index) {
+            return Column(
+              children: [
+                ListTile(
+                  leading: Container(
+                    width: 48,
+                    height: 48,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color.fromARGB(255, 7, 8, 8),
+                    ),
+                    child: const Icon(
+                      Icons.people,
+                      color: Colors.white,
+                    ),
+                  ),
+                  title: const Text(
+                      'ZUCK🔷-Threads reached 100 million sign ups over the weekend.Thats mostly organic demand and we havent even turned on many promotions yet.Cant believe its only been 5 days!💡'),
+                  iconColor: Colors.red,
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('5 days ago'),
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              debugPrint('You clicked like');
+                            },
+                            icon: const Icon(Icons.favorite_border_sharp),
+                            color: Colors.black,
+                          ),
+                          const Text('435k'),
+                          IconButton(
+                            onPressed: () {
+                              debugPrint('You clicked share');
+                            },
+                            icon: const Icon(Icons.message_outlined),
+                            color: Colors.black,
+                          ),
+                          const Text('190k'),
+                          IconButton(
+                            onPressed: () {
+                              debugPrint('You clicked share');
+                            },
+                            icon: const Icon(Icons.share_outlined),
+                            color: Colors.black,
+                          ),
+                          const Text('130k'),
+                          IconButton(
+                            onPressed: () {
+                              debugPrint('You clicked send');
+                            },
+                            icon: const Icon(Icons.search),
+                            color: const Color.fromARGB(255, 104, 83, 83),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                const Divider(),
+              ],
+            );
+          },
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          items: const [
+            BottomNavigationBarItem(
+              label: '',
+              icon: Icon(Icons.home, color: Color.fromARGB(255, 105, 91, 91)),
+            ),
+            BottomNavigationBarItem(
+              label: 'Search',
+              icon: Icon(Icons.search, color: Color.fromARGB(255, 0, 0, 0)),
+            ),
+            BottomNavigationBarItem(
+              label: 'Post',
+              icon:
+                  Icon(Icons.post_add, color: Color.fromARGB(255, 104, 86, 86)),
+            ),
+            BottomNavigationBarItem(
+              label: 'Favorite',
+              icon:
+                  Icon(Icons.favorite, color: Color.fromARGB(255, 104, 97, 97)),
+            ),
+            BottomNavigationBarItem(
+              label: 'User',
+              icon: Icon(Icons.supervised_user_circle,
+                  color: Color.fromARGB(255, 105, 91, 91)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
