@@ -1,0 +1,96 @@
+ import 'package:flutter/material.dart';
+
+void main() => runApp(const MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    const appTitle = 'Task';
+    return MaterialApp(
+      title: appTitle,
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text(appTitle),
+          actions: const [
+            Icon(Icons.delete),
+          ],
+        ),
+        body: const MyCustomForm(),
+      ),
+    );
+  }
+}
+
+class MyCustomForm extends StatefulWidget {
+  const MyCustomForm({super.key});
+
+  @override
+  _MyCustomFormState createState() => _MyCustomFormState();
+}
+
+class _MyCustomFormState extends State<MyCustomForm> {
+  TextEditingController _textEditingController = TextEditingController();
+  List<String> _addedTexts = [];
+
+  @override
+  void dispose() {
+    _textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 11),
+          child: TextFormField(
+            controller: _textEditingController,
+            decoration: InputDecoration(
+              border: UnderlineInputBorder(),
+              suffixIcon: IconButton(
+                onPressed: () {
+                  setState(() {
+                    _addedTexts.add(_textEditingController.text);
+                    _textEditingController.clear();
+                  });
+                },
+                icon: const Icon(Icons.add),
+                iconSize: 32,
+              ),
+              labelText: 'Write something',
+            ),
+          ),
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.end, // Sağa hizala
+          children: _addedTexts.asMap().entries.map((entry) {
+            final index = entry.key;
+            final text = entry.value;
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment
+                    .spaceBetween, // Metin ve sil düğmesini aralarında hizala
+                children: [
+                  Text(text),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _addedTexts.removeAt(index);
+                      });
+                    },
+                    icon: const Icon(Icons.delete),
+                  ),
+                ],
+              ),
+            );
+          }).toList(),
+        ),
+      ],
+    );
+  }
+}
